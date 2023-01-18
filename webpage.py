@@ -44,8 +44,8 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
 
         ]),
 
-        dbc.Row([html.Div(html.B(""),
-                          style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'center',
+        dbc.Row([html.Div(html.B("From Station : "),
+                          style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'left',
                                  'marginBottom': 20})
                  ]),
 
