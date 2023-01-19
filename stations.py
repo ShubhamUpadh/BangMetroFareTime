@@ -13,7 +13,6 @@ stationsList = ["Attiguppe", "Baiyappanahalli", "Banashankari", "Central College
                 ]
 
 
-
 class Graph:
     def __init__(self, edges):
         self.edges = edges
@@ -153,12 +152,12 @@ if __name__ == "__main__":
     # print(routeStations,"\n",len(routeStations))
     k = metroRoute.bfsPath("Halasuru", "Lalbagh")
     print(metroRoute.fareCalc(k))
-
+'''
     G = nx.Graph(metroRoute.graph_dict)
     pos = nx.spring_layout(G)
     nx.draw_networkx_nodes(G, pos)
     nx.draw_networkx_edges(G, pos, connectionstyle="Bar")
     nx.draw_networkx_labels(G, pos, font_size=5)
     plt.show()
-
+'''
 # metroRoute.printEdges()
