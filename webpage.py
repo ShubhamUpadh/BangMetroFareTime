@@ -26,6 +26,15 @@ textCol = {
 # }
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+stationsList = ["Attiguppe", "Baiyappanahalli", "Banashankari", "Central College", "Chikpet", "Cubbon Park",
+                "Dasarahalli", "Deepanjali Nagar", "Goreguntepalaya", "Halasuru", "Hosahalli", "Indiranagar",
+                "Jalahalli", "Jayanagar", "JP Nagar", "K.R. Market", "KSR Bengaluru Railway Junction", "Kuvempu Road",
+                "Lalbagh", "M.G. Road", "Magadi Road", "Mahalaxmi", "Majestic", "Mantri Square Sampige", "Mysore Road",
+                "Nagasandra", "National College", "Peenya", "Peenya Industry", "R.V. Road", "Rajajinagar",
+                "Sandal Soap Factory", "South End Circle", "Srirampura", "Swami Vivekananda Road", "Trinity",
+                "Vidhana Soudha", "Vijayanagar", "Yelechenhalli", "Yeshwanthpur"
+                ]
+
 app.title = "Bangalore Metro Fare"
 
 app.layout = html.Div(style={'paddingTop': 50}, children=[
@@ -34,26 +43,39 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
 
         dbc.Row([
             html.Div(html.B("Namma Fare Calculator"), style={'fontSize': 40, 'color': '#FFF', 'textAlign': 'center',
-                                                    'marginBottom': 40})
+                                                             'marginBottom': 10})
 
         ]),
 
-        dbc.Row([
-            html.Div(html.B("Hello and Welcome !"), style={'fontSize': 25, 'color': '#FFF', 'textAlign': 'center',
-                                                           'marginBottom': 10})
-
-        ]),
+        html.Hr(style={'color': "#FFF"}),
 
         dbc.Row([html.Div(html.B("From Station : "),
-                          style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'left',
-                                 'marginBottom': 20})
+                          style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'center',
+                                 'marginBottom': 10})
                  ]),
 
-        dbc.Row([html.Div(html.B("For example, the longest dictionary word that doesn't contain the alphabets (a, x, i,"
-                                 " s) is HYDROMETEOROLOGY."),
+        dbc.Row([
+            dbc.Col(width=3),
+            dbc.Col(html.Div(dcc.Dropdown(
+                options=stationsList,
+                value="Select from station", searchable=True, id="fromStation"
+            ), style={'textAlign': 'left'}), width=6),
+            dbc.Col(width=3)
+        ]),
+
+        dbc.Row([html.Div(html.B("To Station : "),
                           style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'center',
-                                 'marginBottom': 5, 'marginTop': 30})
+                                 'marginBottom': 10, 'marginTop': 20})
                  ]),
+
+        dbc.Row([
+            dbc.Col(width=3),
+            dbc.Col(html.Div(dcc.Dropdown(
+                options=stationsList,
+                value="Select to station", searchable=True, id="toStation"
+            ), style={'textAlign': 'left'}), width=6),
+            dbc.Col(width=3)
+        ]),
 
         dbc.Row([html.Div(html.B("Enter the alphabets that the word SHOULD NOT contain : "),
                           style={'fontSize': 20, 'color': '#FFF', 'textAlign': 'center',
@@ -113,8 +135,6 @@ def update_output_div(input_value):
 
     else:
         return str(longestWord[2:-2]).upper()
-
-
 
 
 if __name__ == "__main__":

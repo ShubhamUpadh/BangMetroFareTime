@@ -3,6 +3,16 @@ import matplotlib.pylab as plt
 
 pathLength = 0
 
+stationsList = ["Attiguppe", "Baiyappanahalli", "Banashankari", "Central College", "Chikpet", "Cubbon Park",
+                "Dasarahalli", "Deepanjali Nagar", "Goreguntepalaya", "Halasuru", "Hosahalli", "Indiranagar",
+                "Jalahalli", "Jayanagar", "JP Nagar", "K.R. Market", "KSR Bengaluru Railway Junction", "Kuvempu Road",
+                "Lalbagh", "M.G. Road", "Magadi Road", "Mahalaxmi", "Majestic", "Mantri Square Sampige", "Mysore Road",
+                "Nagasandra", "National College", "Peenya", "Peenya Industry", "R.V. Road", "Rajajinagar",
+                "Sandal Soap Factory", "South End Circle", "Srirampura", "Swami Vivekananda Road", "Trinity",
+                "Vidhana Soudha", "Vijayanagar", "Yelechenhalli", "Yeshwanthpur"
+                ]
+
+
 
 class Graph:
     def __init__(self, edges):
@@ -91,13 +101,12 @@ class Graph:
         return len(new_path)
 
     def fareCalc(self, numstations):
-        numstations = numstations -1
+        numstations = numstations - 1
         stationsTravelled = {
             0: 10, 1: 10, 2: 15, 3: 15, 4: 18, 5: 20, 6: 22, 7: 25, 8: 28, 9: 30, 10: 30, 11: 35, 12: 35, 13: 38,
             14: 40, 15: 42, 16: 45, 17: 45, 18: 50, 19: 50, 20: 52, 21: 55, 22: 58, 23: 60, 24: 60
         }
         return stationsTravelled[numstations]
-
 
 
 if __name__ == "__main__":
@@ -148,8 +157,8 @@ if __name__ == "__main__":
     G = nx.Graph(metroRoute.graph_dict)
     pos = nx.spring_layout(G)
     nx.draw_networkx_nodes(G, pos)
-    nx.draw_networkx_edges(G, pos,connectionstyle="Bar")
-    nx.draw_networkx_labels(G, pos,font_size=5)
+    nx.draw_networkx_edges(G, pos, connectionstyle="Bar")
+    nx.draw_networkx_labels(G, pos, font_size=5)
     plt.show()
 
 # metroRoute.printEdges()
