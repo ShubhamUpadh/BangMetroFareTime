@@ -182,7 +182,7 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
 
         dbc.Row([
             dbc.Col(width=1),
-            dbc.Col(html.Div(id="my-output"), style={'textAlign': 'center', 'color': '#FFFFFF','fontSize': 30}, width=10),
+            dbc.Col(html.Div(html.B(id="my-output")), style={'textAlign': 'center', 'color': '#FFFFFF','fontSize': 30}, width=10),
             dbc.Col(width=1)
         ]),
 
@@ -201,6 +201,9 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
 def update_output_div(fromst, tost):
     if fromst == "Select from station" or tost == "Select to station":
         return "No station selected"
+
+    if fromst == tost:
+        return "The fare for getting down at the same station is Rs 10."
 
     routes = [
         ("Majestic", "Mantri Square Sampige"),
@@ -241,7 +244,7 @@ def update_output_div(fromst, tost):
 
     metroRoute = Graph(routes)
     k = metroRoute.bfsPath(fromst, tost)
-    fare = f"The fare between {fromst} and {tost} is Rs {metroRoute.fareCalc(k)}"
+    fare = f"The fare between {fromst} and {tost} is Rs {metroRoute.fareCalc(k)} ."
     return fare
 
 
