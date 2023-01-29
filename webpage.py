@@ -11,6 +11,7 @@ import networkx as nx
 import matplotlib.pylab as plt
 
 pathLength = 0
+shortPath = []
 
 colors = {
     'background': '#000000'
@@ -107,6 +108,8 @@ class Graph:
                     # neighbour node is the goal
                     if neighbour == goal:
                         print("Shortest path = ", *new_path)
+                        newAppend = [new_path, "->"]
+                        shortPath.append(newAppend)
                         return len(new_path)
                 explored.append(node)
 
@@ -182,7 +185,8 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
 
         dbc.Row([
             dbc.Col(width=1),
-            dbc.Col(html.Div(html.B(id="my-output")), style={'textAlign': 'center', 'color': '#FFFFFF','fontSize': 30}, width=10),
+            dbc.Col(html.Div(html.B(id="my-output")), style={'textAlign': 'center', 'color': '#FFFFFF', 'fontSize': 30},
+                    width=10),
             dbc.Col(width=1)
         ]),
 
@@ -191,6 +195,8 @@ app.layout = html.Div(style={'paddingTop': 50}, children=[
     ])
 
 ])
+
+print(shortPath)
 
 
 @app.callback(
